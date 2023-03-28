@@ -1,0 +1,28 @@
+.container {
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+.inner {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    cursor: grab;
+    z-index: 1;
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+.empty {
+    width: 100px;
+    height: 100px;
+    background-color: #D9D9D9;
+}
+
+.empty_p {
+    text-align: center;
+    font-size: larger;
+}
+
