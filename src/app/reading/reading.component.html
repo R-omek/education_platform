@@ -52,32 +52,62 @@
     </div>
 
     <div class="flex justify-content-evenly">
-        <div>
-            <div class="empty"></div>
-            <p class="empty_p">Аптека</p>
+        <div class="flex flex-column align-items-center justify-content-start">
+            <div 
+                cdkDropList 
+                #empty1="cdkDropList" 
+                [cdkDropListData]="secondContainer"
+                (cdkDropListDropped)="droppedInEmpty1($event)" 
+                [cdkDropListConnectedTo]="[doneList]" 
+                [cdkDropListEnterPredicate]="isPharmacy"
+                class="empty flex align-items-center justify-content-center"
+            >
+            <img *ngIf="secondContainer.length" [src]="secondContainer[0].src" alt="">
+            </div>
+            <p *ngIf="secondContainer.length" class="empty_p">Аптека</p>
         </div>
-        <div>
-            <div class="empty"></div>
-            <p class="empty_p">Акваріум</p>
+        <div class="flex flex-column align-items-center justify-content-start">
+            <div 
+                cdkDropList 
+                #empty2="cdkDropList" 
+                cdkDropListOrientation="horizontal" 
+                [cdkDropListData]="thirdContainer"
+                (cdkDropListDropped)="droppedInEmpty2($event)"
+                [cdkDropListConnectedTo]="[doneList]" 
+                [cdkDropListEnterPredicate]="isAquarium"
+                class="empty flex align-items-center justify-content-center"
+            >
+            <img *ngIf="thirdContainer.length" [src]="thirdContainer[0].src" alt="">
+            </div>
+            <p *ngIf="thirdContainer.length" class="empty_p">Акваріум</p>
         </div>
-        <div>
-            <div class="empty"></div>
-            <p class="empty_p">Аґрус</p>
+        <div class="flex flex-column align-items-center justify-content-start">
+            <div 
+                cdkDropList 
+                #empty3="cdkDropList" 
+                cdkDropListOrientation="horizontal" 
+                [cdkDropListData]="fourthContainer"
+                (cdkDropListDropped)="droppedInEmpty3($event)" 
+                [cdkDropListEnterPredicate]="isAgrus"
+                [cdkDropListConnectedTo]="[doneList]" 
+                class="empty flex align-items-center justify-content-center"
+            >
+            <img *ngIf="fourthContainer.length" [src]="fourthContainer[0].src" alt="">
+            </div>
+            <p *ngIf="fourthContainer.length" class="empty_p">Агрус</p>
         </div>
     </div>
 
-    <div class="images flex justify-content-evenly">
-        <img (click)="consolelog($event)" src="../assets/icons/icon.svg" class='inner' [style]="{left: rectX + 'px', top: rectY + 'px'}" #inner1
-            alt="">
-        <img src="../../assets/icons/aquarium.svg" class='inner' [style]="{left: rectX + 'px', top: rectY + 'px'}"
-            #inner2 alt="">
-        <img src="../../assets/icons/bus.svg" class='inner' [style]="{left: rectX + 'px', top: rectY + 'px'}" #inner3
-            alt="">
-        <img src="../../assets/icons/pharmacy.svg" class='inner' [style]="{left: rectX + 'px', top: rectY + 'px'}"
-            #inner4 alt="">
-        <img src="../../assets/icons/bus.svg" class='inner' [style]="{left: rectX + 'px', top: rectY + 'px'}" #inner5
-            alt="">
-        <img src="../../assets/icons/bus.svg" class='inner' [style]="{left: rectX + 'px', top: rectY + 'px'}" #inner6
-            alt="">
+
+    <div 
+        cdkDropList 
+        #doneList="cdkDropList" 
+        cdkDropListOrientation="horizontal" 
+        [cdkDropListData]="firstContainer"
+        [cdkDropListConnectedTo]="[empty1, empty2, empty3]"
+        class="images-container"
+    >
+        <img cdkDrag *ngFor="let element of firstContainer" [src]="element.src" class='image' [alt]="element.alt">
     </div>
+
 </div>

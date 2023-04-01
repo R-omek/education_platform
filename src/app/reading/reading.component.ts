@@ -1,73 +1,98 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { tap, switchMap, takeUntil } from 'rxjs';
-import { fromEvent } from 'rxjs/internal/observable/fromEvent';
+import { Component, ViewChild } from '@angular/core';
+import { CdkDrag, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
+interface Box {
+  name: string
+}
 @Component({
   selector: 'app-reading',
   templateUrl: './reading.component.html',
   styleUrls: ['./reading.component.scss']
 })
-export class ReadingComponent implements AfterViewInit, OnInit {
-  rectX: number = 0;
-  rectY: number = 0;
-
-  curX?: number;
-  curY?: number;
-
-  isWin: boolean = false
-
-  @ViewChild('inner1') inner1!: ElementRef;
-  @ViewChild('inner2') inner2!: ElementRef;
-  @ViewChild('inner3') inner3!: ElementRef;
-  @ViewChild('inner4') inner4!: ElementRef;
-  @ViewChild('inner5') inner5!: ElementRef;
-  @ViewChild('inner6') inner6!: ElementRef;
-
-  selectedInner: ElementRef = this.inner1
-
-  ngOnInit() {
-
+export class ReadingComponent {
+  @ViewChild('empty1') empty1: any
+  @ViewChild('empty2') empty2: any
+  @ViewChild('empty3') empty3: any
+  firstContainer: any[] = [
+    {src: '../assets/icons/icon.svg', alt: 'agrus'},
+    {src: '../assets/icons/bus.svg', alt: 'bus'},
+    {src: '../assets/icons/pharmacy.svg', alt: 'pharmacy'},
+    {src: '../assets/icons/bus.svg', alt: 'bus'},
+    {src: '../assets/icons/aquarium.svg', alt: 'aquarium'},
+    {src: '../assets/icons/bus.svg', alt: 'bus'}
+  ]
+  secondContainer: any[] = []
+  thirdContainer: any[] = []
+  fourthContainer: any[] = []
+  emptyBoxes: Box[] = [
+    {name: 'Аптека'},
+    {name: 'Акваріум'},
+    {name: 'Аґрус'},
+  ]
+  
+  back(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+    moveItemInArray(this.firstContainer, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
-  consolelog(event: any) {
-    this.selectedInner = event
+
+  droppedInEmpty1(event: any) {
+    if (event.item.element.nativeElement.alt === 'pharmacy') {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
+  droppedInEmpty2(event: any) {
+    if (event.item.element.nativeElement.alt === 'aquarium') {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
+  droppedInEmpty3(event: any) {
+    if (event.item.element.nativeElement.alt === 'agrus') {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 
-  ngAfterViewInit(): void {
-    const subscribeToMove = () => {
-      fromEvent(this.inner2.nativeElement || this.inner1.nativeElement, 'mousedown')
-        .pipe(
-          tap((event: any) => {
-            (this.curX = event.clientX), (this.curY = event.clientY);
-          }),
-          switchMap((e) =>
-            fromEvent(window, 'mousemove').pipe(
-              tap((e: any) => e.preventDefault())
-            )
-          ),
-          takeUntil(fromEvent(window, 'mouseup'))
-        )
-        .subscribe({
-          next: (e: MouseEvent) => {
-            
-            const dx = e.clientX - this.curX!;
-            const dy = e.clientY - this.curY!;
-            
-            this.rectX += dx;
-            this.rectY += dy;
-            
-            [this.curX, this.curY] = [e.clientX, e.clientY];
-          },
-          complete:() => {
-            console.log(this.curX, this.curY)
-            if ((this.curX! > 763 && this.curX! < 813) && (this.curY! > 517 && this.curY! < 621)) {
-              this.isWin = true
-              return
-            }
-            subscribeToMove();
-          },
-        });
-    };
-
-    subscribeToMove();
+  isPharmacy(item: any) {
+    if (item.element.nativeElement.alt === 'pharmacy') {
+      return true
+    } else {
+      return false
+    }
+  }
+  isAquarium(item: any) {
+    if (item.element.nativeElement.alt === 'aquarium') {
+      return true
+    } else {
+      return false
+    }
+  }
+  isAgrus(item: any) {
+    if (item.element.nativeElement.alt === 'agrus') {
+      return true
+    } else {
+      return false
+    }
   }
 }
