@@ -14,12 +14,12 @@ export class ReadingComponent {
   @ViewChild('empty2') empty2: any
   @ViewChild('empty3') empty3: any
   firstContainer: any[] = [
-    {src: '../assets/icons/icon.svg', alt: 'agrus'},
-    {src: '../assets/icons/bus.svg', alt: 'bus'},
-    {src: '../assets/icons/pharmacy.svg', alt: 'pharmacy'},
-    {src: '../assets/icons/bus.svg', alt: 'bus'},
-    {src: '../assets/icons/aquarium.svg', alt: 'aquarium'},
-    {src: '../assets/icons/bus.svg', alt: 'bus'}
+    {src: './assets/icons/icon.svg', alt: 'agrus'},
+    {src: './assets/icons/bus.svg', alt: 'bus'},
+    {src: './assets/icons/pharmacy.svg', alt: 'pharmacy'},
+    {src: './assets/icons/bus.svg', alt: 'bus'},
+    {src: './assets/icons/aquarium.svg', alt: 'aquarium'},
+    {src: './assets/icons/bus.svg', alt: 'bus'}
   ]
   secondContainer: any[] = []
   thirdContainer: any[] = []
