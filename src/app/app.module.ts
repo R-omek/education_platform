@@ -5,18 +5,33 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReadingComponent } from './reading/reading.component';
 import { HomeComponent } from './home/home.component';
-import { DragDropModule } from '@angular/cdk/drag-drop'
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HeaderComponent } from './shared/header/header.component'
+import { TabMenuModule } from 'primeng/tabmenu';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { Lesson4Component } from './reading/lesson4/lesson4.component';
+import {SlideMenuModule} from 'primeng/slidemenu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ProgressBarModule} from 'primeng/progressbar';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ReadingComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    MainLayoutComponent,
+    Lesson4Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DragDropModule
+    DragDropModule,
+    TabMenuModule,
+    SlideMenuModule,
+    BrowserAnimationsModule,
+    ProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
