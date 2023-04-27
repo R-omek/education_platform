@@ -13,6 +13,7 @@ import { Lesson4Component } from './reading/lesson4/lesson4.component';
 import {SlideMenuModule} from 'primeng/slidemenu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ProgressBarModule} from 'primeng/progressbar';
+import { Lesson3Component } from './reading/lesson3/lesson3.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {ProgressBarModule} from 'primeng/progressbar';
     HomeComponent,
     HeaderComponent,
     MainLayoutComponent,
-    Lesson4Component
+    Lesson4Component,
+    Lesson3Component
   ],
   imports: [
     BrowserModule,

@@ -7,14 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./reading.component.scss']
 })
 export class ReadingComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
   items = [
     {
       label: 'Lessons',
-      items: [{
-        label: 'Lesson №4',
-        routerLink: 'lesson-4'
-      }]
+      items: [
+        {
+          label: 'Lesson №3',
+          routerLink: 'lesson-3'
+        },
+        {
+          label: 'Lesson №4',
+          routerLink: 'lesson-4'
+        }
+      ]
     }
   ];
 

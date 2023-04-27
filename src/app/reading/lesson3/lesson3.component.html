@@ -1,0 +1,27 @@
+<div class="container flex flex-column">
+    <div class="lesson-title flex gap-3">
+        <svg width="39" height="44" viewBox="0 0 39 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M6.07386 44H0.534091L16.5568 0.363635H22.0114L38.0341 44H32.4943L19.4545 7.26704H19.1136L6.07386 44ZM8.11932 26.9545H30.4489V31.642H8.11932V26.9545Z"
+                fill="black" />
+        </svg>
+        <div class="flex flex-column justify-content-end">
+            <h3>Урок 3</h3>
+            <p>Знайди та обведи в словах нижче всі літери “а”</p>
+        </div>
+    </div>
+
+    <div class="lesson-content">
+        <p *ngIf="lettersRemaining > 0">Залишилося знайти ще <b>{{ lettersRemaining }}</b> букв</p>
+        <p *ngIf="lettersRemaining < 1">Молодець, всі букви було знайдено</p>
+        <div class="flex flex-wrap gap-8">
+            <h2 *ngFor="let letter of letters">
+                <span (click)="clickLetter($event)" class="lesson-content-letters" *ngFor="let l of letter">{{ l }}</span>
+            </h2>
+        </div>
+    </div>
+
+</div>
+<div class="progress-bar">
+    <p-progressBar [value]="progressValue" [showValue]="false"></p-progressBar>
+</div>

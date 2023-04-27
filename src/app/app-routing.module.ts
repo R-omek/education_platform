@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ReadingComponent } from './reading/reading.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { Lesson4Component } from './reading/lesson4/lesson4.component';
+import { Lesson3Component } from './reading/lesson3/lesson3.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'reading',
         component: ReadingComponent
+      },
+      {
+        path: 'reading/lesson-3',
+        component: Lesson3Component
       },
       {
         path: 'reading/lesson-4',
