@@ -1,7 +1,7 @@
 .container {
     max-width: 1220px;
     margin: 0 auto;
-    height: calc(100vh - 58px);
+    height: calc(100vh - 75px);
 }
 
 .lesson-title {
@@ -62,7 +62,7 @@
     }
 
     50% {
-        transform: scale(5) translate(0, -20px);
+        transform: scale(3) translate(0, -10px);
     }
 
     100% {
