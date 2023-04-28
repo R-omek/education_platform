@@ -1,8 +1,7 @@
 .container {
     max-width: 1220px;
     margin: 0 auto;
-    height: calc(100vh - 100px);
-    padding: 20px;
+    height: calc(100vh - 58px);
 }
 
 .lesson-title {
@@ -18,7 +17,7 @@
     user-select: none;
 
     p {
-        font-size: 26px;
+        font-size: 30px;
         margin-bottom: 5rem;
     }
 
@@ -34,14 +33,14 @@
 }
 
 .clicked {
-    color: rgb(22, 174, 30);
     display: inline-block;
-    transform: translate(0, -5px) scale(1.2);
+    animation: success .5s ease-in-out;
+    color: rgb(22, 174, 30);
 }
 
 .wrong-letter {
     display: inline-block;
-    animation: rotate 1s ease-in-out;
+    animation: error 1s ease-in-out;
 }
 
 .tip {
@@ -57,14 +56,28 @@
     width: 100%;
 }
 
-@keyframes rotate {
+@keyframes success {
     0% {
-        transform: rotate(0deg);
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(5) translate(0, -20px);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes error {
+    0% {
+        transform: rotate(0);
     }
 
     33% {
         transform: rotate(30deg);
-        color: rgb(239, 63, 63);
+        color: red;
     }
 
     66% {
@@ -74,7 +87,7 @@
 
     100% {
         transform: rotate(0deg);
-        color: black;
+        color: red;
     }
 }
 
@@ -84,7 +97,7 @@
     }
 
     33% {
-        transform: translate(0, -10px) rotate(10deg);
+        transform: translate(0, -50%) rotate(10deg);
     }
 
     66% {

@@ -57,6 +57,19 @@ export class Lesson3Component implements OnInit, AfterViewInit, OnDestroy {
         if (letters[j].textContent === 'а' && !letters[j].classList.contains('clicked')) {
           letters[j].classList.add('tip')
           setTimeout(() => {letters[j].classList.remove('tip')}, 1000)
+          return
+        }
+      }
+    }
+  }
+
+  winGame() {
+    const children = this.wordContainer.nativeElement.children
+    for (let i = 0; i < children.length; i++) {
+      const letters = children[i].children
+      for (let j = 0; j < letters.length; j++) {
+        if (letters[j].textContent === 'а') {
+          letters[j].classList.add('tip')
         }
       }
     }
@@ -68,6 +81,10 @@ export class Lesson3Component implements OnInit, AfterViewInit, OnDestroy {
       event.target.classList.add('clicked')
       this.lettersRemaining--
       this.progressValue += this.divideValue
+      
+      if (this.lettersRemaining < 1) {
+        this.winGame()
+      }
     }
     if (event.target.textContent !== 'а') {
       event.target.classList.add('wrong-letter')
