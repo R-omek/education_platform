@@ -44,27 +44,50 @@
     animation: rotate 1s ease-in-out;
 }
 
+.tip {
+    display: inline-block;
+    animation: showTip .5s ease-in-out;
+}
+
 ::ng-deep .p-progressbar-value {
     background: #38c135 !important;
 }
+
 ::ng-deep .p-progressbar {
     width: 100%;
 }
 
 @keyframes rotate {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     33% {
-      transform: rotate(30deg);
-      color: rgb(239, 63, 63);
+        transform: rotate(30deg);
+        color: rgb(239, 63, 63);
     }
+
     66% {
         transform: rotate(-30deg);
         color: red;
     }
+
     100% {
-      transform: rotate(0deg);
-      color: black;
+        transform: rotate(0deg);
+        color: black;
     }
-  }
+}
+
+@keyframes showTip {
+    0% {
+        transform: translate(0) scale(1);
+    }
+
+    50% {
+        transform: translate(0, -10px) scale(1.1);
+    }
+
+    100% {
+        transform: translate(0) scale(1);
+    }
+}

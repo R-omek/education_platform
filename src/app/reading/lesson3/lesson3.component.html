@@ -14,7 +14,7 @@
     <div class="lesson-content">
         <p *ngIf="lettersRemaining > 0">Залишилося знайти ще <b>{{ lettersRemaining }}</b> букв</p>
         <p *ngIf="lettersRemaining < 1">Молодець, всі букви було знайдено</p>
-        <div class="flex flex-wrap gap-8">
+        <div #wordContainer class="flex flex-wrap gap-8">
             <h2 *ngFor="let letter of letters">
                 <span (click)="clickLetter($event)" class="lesson-content-letters" *ngFor="let l of letter">{{ l }}</span>
             </h2>
