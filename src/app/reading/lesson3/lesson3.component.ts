@@ -31,6 +31,9 @@ export class Lesson3Component {
       event.target.classList.add('clicked')
       this.lettersRemaining--
       this.progressValue += divideValue
+    } else {
+      event.target.classList.add('wrong-letter')
+      setTimeout(() => {event.target.classList.remove('wrong-letter')}, 1000)
     }
   }
 }

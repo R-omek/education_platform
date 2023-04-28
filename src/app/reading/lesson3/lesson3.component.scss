@@ -34,7 +34,14 @@
 }
 
 .clicked {
-    color: red;
+    color: rgb(22, 174, 30);
+    display: inline-block;
+    transform: scale(1.2);
+}
+
+.wrong-letter {
+    display: inline-block;
+    animation: rotate 1s ease-in-out;
 }
 
 ::ng-deep .p-progressbar-value {
@@ -43,3 +50,21 @@
 ::ng-deep .p-progressbar {
     width: 100%;
 }
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    33% {
+      transform: rotate(30deg);
+      color: rgb(239, 63, 63);
+    }
+    66% {
+        transform: rotate(-30deg);
+        color: red;
+    }
+    100% {
+      transform: rotate(0deg);
+      color: black;
+    }
+  }
