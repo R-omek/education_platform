@@ -36,7 +36,7 @@
 .clicked {
     color: rgb(22, 174, 30);
     display: inline-block;
-    transform: scale(1.2);
+    transform: translate(0, -5px) scale(1.2);
 }
 
 .wrong-letter {
@@ -46,7 +46,7 @@
 
 .tip {
     display: inline-block;
-    animation: showTip .5s ease-in-out;
+    animation: showTip .8s ease-in-out;
 }
 
 ::ng-deep .p-progressbar-value {
@@ -80,14 +80,18 @@
 
 @keyframes showTip {
     0% {
-        transform: translate(0) scale(1);
+        transform: translate(0);
     }
 
-    50% {
-        transform: translate(0, -10px) scale(1.1);
+    33% {
+        transform: translate(0, -10px) rotate(10deg);
+    }
+
+    66% {
+        transform: rotate(-10deg);
     }
 
     100% {
-        transform: translate(0) scale(1);
+        transform: translate(0);
     }
 }

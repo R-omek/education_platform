@@ -6,8 +6,9 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
   styleUrls: ['./lesson3.component.scss']
 })
 export class Lesson3Component implements OnInit, AfterViewInit, OnDestroy {
-  lettersRemaining: number = 11
+  lettersRemaining: number = 0
   progressValue: number = 0
+  divideValue: number = 0
 
   private timer: any;
 
@@ -24,7 +25,12 @@ export class Lesson3Component implements OnInit, AfterViewInit, OnDestroy {
   letters: any[] = []
 
   ngOnInit(): void {
-    this.words.forEach(word => this.letters.push(word.split('')))
+    this.words.forEach(word => {
+      const splittedWord: string[] = word.split('')
+      this.letters.push(splittedWord)
+      this.lettersRemaining += splittedWord.filter(l => l === 'а').length
+    })
+    this.divideValue = 100 / this.lettersRemaining
   }
 
   ngAfterViewInit(): void {
@@ -57,12 +63,11 @@ export class Lesson3Component implements OnInit, AfterViewInit, OnDestroy {
   }
 
   clickLetter(event: any) {
-    const divideValue: number = 100 / 11
     if (!event.target.classList.contains('clicked') && event.target.textContent === 'а') {
       this.resetTimer()
       event.target.classList.add('clicked')
       this.lettersRemaining--
-      this.progressValue += divideValue
+      this.progressValue += this.divideValue
     }
     if (event.target.textContent !== 'а') {
       event.target.classList.add('wrong-letter')
