@@ -14,23 +14,17 @@ export class Lesson3Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild ('wordContainer') wordContainer: any
 
   words: string[] = [
-    'абетка',
-    'акула',
-    'кава',
-    'забава',
-    'аптека',
+    'мама',
+    'тато',
+    'чай',
+    'коробка',
+    'магазин'
   ]
 
-  letters = [
-    ['а', 'б', 'е', 'т', 'к', 'а'],
-    ['а', 'к', 'у', 'л', 'а'],
-    ['к', 'а', 'в', 'а'],
-    ['з', 'а', 'б', 'а', 'в', 'а'],
-    ['а', 'п', 'т', 'е', 'к', 'а']
-  ]
+  letters: any[] = []
 
   ngOnInit(): void {
-    
+    this.words.forEach(word => this.letters.push(word.split('')))
   }
 
   ngAfterViewInit(): void {
@@ -50,7 +44,6 @@ export class Lesson3Component implements OnInit, AfterViewInit, OnDestroy {
   }
 
   showTip() {
-    console.log('tip showed')
     const children = this.wordContainer.nativeElement.children
     for (let i = 0; i < children.length; i++) {
       const letters = children[i].children
